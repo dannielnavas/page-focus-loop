@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: '',
+  apiUrl: 'https://focus-loop-api.danniel.dev/',
   firebase: {
     apiKey: 'AIzaSyBPs8lbPOpx4094Sqnk8xTDiWJ3jZi4Zkc',
     authDomain: 'focus-loop-28780.firebaseapp.com',
