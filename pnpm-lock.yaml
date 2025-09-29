@@ -29,6 +29,9 @@ importers:
       '@angular/router':
         specifier: ^20.3.0
         version: 20.3.2(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(@angular/platform-browser@20.3.2(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@omnedia/ngx-fuzzy-text':
+        specifier: ^3.0.0
+        version: 3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))
       firebase:
         specifier: ^12.3.0
         version: 12.3.0
@@ -1322,6 +1325,12 @@ packages:
   '@npmcli/run-script@9.1.0':
     resolution: {integrity: sha512-aoNSbxtkePXUlbZB+anS1LqsJdctG5n3UVhfU47+CDdwMi6uNTBMF9gPcQRnqghQd2FGzcwwIFBruFMxjhBewg==}
     engines: {node: ^18.17.0 || >=20.5.0}
+
+  '@omnedia/ngx-fuzzy-text@3.0.0':
+    resolution: {integrity: sha512-bl1OImq38GoIFw8iERO0P+cYo5xJxSjHHD3DVdUwH4qCtwHxhcBZQRT/D5JGqrF02iCcbdIOg/QtD/GxOFK8hA==}
+    peerDependencies:
+      '@angular/common': ^20.0.0
+      '@angular/core': ^20.0.0
 
   '@oxc-project/types@0.89.0':
     resolution: {integrity: sha512-yuo+ECPIW5Q9mSeNmCDC2im33bfKuwW18mwkaHMQh8KakHYDzj4ci/q7wxf2qS3dMlVVCIyrs3kFtH5LmnlYnw==}
@@ -4907,6 +4916,12 @@ snapshots:
       which: 5.0.0
     transitivePeerDependencies:
       - supports-color
+
+  '@omnedia/ngx-fuzzy-text@3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))':
+    dependencies:
+      '@angular/common': 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)
+      tslib: 2.8.1
 
   '@oxc-project/types@0.89.0': {}
 
