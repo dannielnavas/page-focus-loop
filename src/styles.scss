@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #ec4899, #a855f7);
+}
+
+.gradient-bg:hover {
+  background: linear-gradient(to right, #db2777, #9333ea);
+}
+
+.blur-gradient {
+  filter: blur(100px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Added animation for AI feature card */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+  }
+}
+
+.ai-feature-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #ec4899, #a855f7);
+}
+
+.gradient-bg:hover {
+  background: linear-gradient(to right, #db2777, #9333ea);
+}
+
+.blur-gradient {
+  filter: blur(100px);
+}
+
+.input-focus:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
