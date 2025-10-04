@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cta',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -20,7 +21,8 @@ import { Component } from '@angular/core';
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
-            class="gradient-bg text-white font-medium text-lg px-8 py-4 rounded-lg transition-all flex items-center gap-2"
+            class="gradient-bg text-white font-medium text-lg px-8 py-4 rounded-lg transition-all flex items-center gap-2 cursor-pointer"
+            [routerLink]="'/register'"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -32,11 +34,11 @@ import { Component } from '@angular/core';
             </svg>
             Start Free Today
           </button>
-          <button
+          <!-- <button
             class="border-2 border-white/20 text-white hover:bg-white/5 text-lg px-8 py-4 rounded-lg bg-transparent transition-all"
           >
             Schedule a Demo
-          </button>
+          </button> -->
         </div>
       </div>
     </section>

@@ -23,6 +23,15 @@
       ],
       "@services/*": [
         "./src/app/core/services/*"
+      ],
+      "@404/*": [
+        "./src/app/404/*"
+      ],
+      "@landing/*": [
+        "./src/app/landing/*"
+      ],
+      "@register/*": [
+        "./src/app/register/*"
       ]
     }
   },

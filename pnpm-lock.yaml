@@ -38,6 +38,9 @@ importers:
       '@omnedia/ngx-neon-underline':
         specifier: ^3.0.0
         version: 3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))
+      '@omnedia/ngx-number-ticker':
+        specifier: ^3.0.0
+        version: 3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))
       '@omnedia/ngx-vortex':
         specifier: ^3.0.1
         version: 3.0.1(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))
@@ -1366,6 +1369,12 @@ packages:
 
   '@omnedia/ngx-neon-underline@3.0.0':
     resolution: {integrity: sha512-ydKRD7JQJMu+Ou4O6LV3G2IZawWJJXB6mY3baXFSwzBiSRGl+Ju+vHtJ+fYlgHVz/a6/22w8EkCUCGI2xM0vjw==}
+    peerDependencies:
+      '@angular/common': ^20.0.0
+      '@angular/core': ^20.0.0
+
+  '@omnedia/ngx-number-ticker@3.0.0':
+    resolution: {integrity: sha512-M8RQeQv98CeP0sU4hitv1557pY5U4gIbbZmKe7HtCl2m4jtA6NYe2u1F0vJyPasOd1ol5EJdX7NtOnkg9lnNWA==}
     peerDependencies:
       '@angular/common': ^20.0.0
       '@angular/core': ^20.0.0
@@ -5151,6 +5160,12 @@ snapshots:
       tslib: 2.8.1
 
   '@omnedia/ngx-neon-underline@3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))':
+    dependencies:
+      '@angular/common': 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)
+      tslib: 2.8.1
+
+  '@omnedia/ngx-number-ticker@3.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))':
     dependencies:
       '@angular/common': 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core': 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)

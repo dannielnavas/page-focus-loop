@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pricing',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <section id="pricing" class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <!-- Decorative gradient -->
@@ -34,7 +35,8 @@ import { Component } from '@angular/core';
             </div>
 
             <button
-              class="w-full mb-8 bg-[#2a3548] hover:bg-[#323d52] text-white px-6 py-3 rounded-lg transition-all"
+              class="w-full mb-8 bg-[#2a3548] hover:bg-[#323d52] text-white px-6 py-3 rounded-lg transition-all cursor-pointer"
+              [routerLink]="'/register'"
             >
               Get Started Free
             </button>
@@ -54,7 +56,7 @@ import { Component } from '@angular/core';
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>
-                <span class="text-gray-300">Unlimited focus sessions</span>
+                <span class="text-gray-300">Limited focus sessions</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg
@@ -88,22 +90,7 @@ import { Component } from '@angular/core';
                 </svg>
                 <span class="text-gray-300">Weekly analytics</span>
               </li>
-              <li class="flex items-start gap-3">
-                <svg
-                  class="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-gray-300">Mobile app access</span>
-              </li>
+
               <li class="flex items-start gap-3">
                 <svg
                   class="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5"
@@ -159,7 +146,10 @@ import { Component } from '@angular/core';
               <span class="text-gray-400 ml-2">/ per month</span>
             </div>
 
-            <button class="w-full mb-8 gradient-bg text-white px-6 py-3 rounded-lg transition-all">
+            <button
+              class="w-full mb-8 gradient-bg text-white px-6 py-3 rounded-lg transition-all cursor-pointer"
+              [routerLink]="'/register'"
+            >
               Start Free Trial
             </button>
 
@@ -251,22 +241,7 @@ import { Component } from '@angular/core';
                 </svg>
                 <span class="text-gray-300">Optimal time blocking</span>
               </li>
-              <li class="flex items-start gap-3">
-                <svg
-                  class="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-gray-300">Custom session templates</span>
-              </li>
+
               <li class="flex items-start gap-3">
                 <svg
                   class="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5"
@@ -282,22 +257,6 @@ import { Component } from '@angular/core';
                   ></path>
                 </svg>
                 <span class="text-gray-300">Priority support</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg
-                  class="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-gray-300">Export data</span>
               </li>
             </ul>
           </div>

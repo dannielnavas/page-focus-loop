@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <footer class="border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
       <div class="container mx-auto max-w-7xl">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
             <h3 class="font-semibold text-white mb-4">Product</h3>
             <ul class="space-y-2">
@@ -65,7 +65,7 @@ import { Component } from '@angular/core';
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
         <div
           class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"

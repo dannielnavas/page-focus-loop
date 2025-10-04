@@ -29,8 +29,7 @@ import { Component } from '@angular/core';
             <div class="flex-1">
               <h3 class="text-2xl font-bold text-white mb-3">Set Your Goals</h3>
               <p class="text-lg text-gray-400 leading-relaxed">
-                Define what you want to accomplish today, this week, or this month. Break down big
-                goals into manageable tasks.
+                Define your daily, weekly, or sprint goals. Break them down into manageable tasks.
               </p>
             </div>
             <div class="hidden md:block">
@@ -91,7 +90,7 @@ import { Component } from '@angular/core';
             <div class="flex-1">
               <h3 class="text-2xl font-bold text-white mb-3">Track Your Progress</h3>
               <p class="text-lg text-gray-400 leading-relaxed">
-                Watch your productivity metrics grow. Celebrate wins and identify patterns to
+                Watch your productivity grow. Celebrate your wins and identify patterns to
                 continuously improve your focus.
               </p>
             </div>
