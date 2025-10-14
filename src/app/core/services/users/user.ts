@@ -11,6 +11,6 @@ export class User {
   private readonly _http = inject(HttpClient);
 
   createUser(user: IUser): Observable<any> {
-    return this._http.post<User>(`${environment.apiUrl}/users`, user);
+    return this._http.post<User>(`${environment.apiUrl}users`, user);
   }
 }

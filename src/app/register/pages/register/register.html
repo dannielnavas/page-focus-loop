@@ -111,20 +111,26 @@
             <p class="text-gray-400">Get started with Focus Loop today</p>
           </div>
 
-          <form id="registerForm" class="space-y-6">
+          <form
+            id="registerForm"
+            class="space-y-6"
+            [formGroup]="formUser"
+            (ngSubmit)="register()"
+            novalidate
+          >
             <!-- Full Name -->
             <div>
               <label for="fullName" class="block text-sm font-medium text-gray-300 mb-2">
                 Full Name
               </label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                required
-                class="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder-gray-500 input-focus transition-all"
-                placeholder="John Doe"
-              />
+              <input type="text" id="fullName" name="full_name" formControlName="full_name" required
+              [class.border-red-500]="isFieldInvalid('full_name')"
+              [class.border-white/10]="!isFieldInvalid('full_name')" class="w-full px-4 py-3
+              bg-[#1a2332] border rounded-lg text-white placeholder-gray-500 input-focus
+              transition-all" placeholder="John Doe" />
+              <div *ngIf="isFieldInvalid('full_name')" class="mt-1 text-sm text-red-400">
+                {{ getFieldError('full_name') }}
+              </div>
             </div>
 
             <!-- Email -->
@@ -132,14 +138,14 @@
               <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
               </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder-gray-500 input-focus transition-all"
-                placeholder="you@example.com"
-              />
+              <input type="email" id="email" name="email" formControlName="email" required
+              [class.border-red-500]="isFieldInvalid('email')"
+              [class.border-white/10]="!isFieldInvalid('email')" class="w-full px-4 py-3
+              bg-[#1a2332] border rounded-lg text-white placeholder-gray-500 input-focus
+              transition-all" placeholder="you@example.com" />
+              <div *ngIf="isFieldInvalid('email')" class="mt-1 text-sm text-red-400">
+                {{ getFieldError('email') }}
+              </div>
             </div>
 
             <!-- Password -->
@@ -147,16 +153,17 @@
               <label for="password" class="block text-sm font-medium text-gray-300 mb-2">
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                minlength="8"
-                class="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder-gray-500 input-focus transition-all"
-                placeholder="At least 8 characters"
-              />
-              <p class="text-xs text-gray-500 mt-2">Must be at least 8 characters long</p>
+              <input type="password" id="password" name="password" formControlName="password"
+              required minlength="8" [class.border-red-500]="isFieldInvalid('password')"
+              [class.border-white/10]="!isFieldInvalid('password')" class="w-full px-4 py-3
+              bg-[#1a2332] border rounded-lg text-white placeholder-gray-500 input-focus
+              transition-all" placeholder="At least 8 characters" />
+              <div *ngIf="isFieldInvalid('password')" class="mt-1 text-sm text-red-400">
+                {{ getFieldError('password') }}
+              </div>
+              <p class="text-xs text-gray-500 mt-2">
+                Must contain uppercase, lowercase, number, and special character
+              </p>
             </div>
 
             <!-- Plan Selection -->
@@ -169,9 +176,10 @@
                 >
                   <input
                     type="radio"
-                    name="plan"
+                    name="subscription_plan_id"
                     value="free"
                     checked
+                    formControlName="subscription_plan_id"
                     class="mt-1 w-4 h-4 text-pink-500 focus:ring-pink-500 focus:ring-offset-0"
                   />
                   <div class="flex-1">
@@ -197,8 +205,9 @@
                   </div>
                   <input
                     type="radio"
-                    name="plan"
+                    name="subscription_plan_id"
                     value="pro"
+                    formControlName="subscription_plan_id"
                     class="mt-1 w-4 h-4 text-pink-500 focus:ring-pink-500 focus:ring-offset-0"
                   />
                   <div class="flex-1">
@@ -288,6 +297,8 @@
                 id="terms"
                 name="terms"
                 required
+                formControlName="accept_terms"
+                [class.border-red-500]="isFieldInvalid('accept_terms')"
                 class="mt-1 w-4 h-4 text-pink-500 focus:ring-pink-500 focus:ring-offset-0 rounded"
               />
               <label for="terms" class="text-sm text-gray-400">
@@ -296,13 +307,42 @@
                 <a href="#" class="text-pink-400 hover:text-pink-300">Privacy Policy</a>
               </label>
             </div>
+            <div *ngIf="isFieldInvalid('accept_terms')" class="mt-1 text-sm text-red-400">
+              {{ getFieldError('accept_terms') }}
+            </div>
 
             <!-- Submit Button -->
             <button
               type="submit"
+              [disabled]="isSubmitting"
+              [class.opacity-50]="isSubmitting"
+              [class.cursor-not-allowed]="isSubmitting"
               class="w-full gradient-bg text-white font-semibold text-lg px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-pink-500/30 cursor-pointer"
             >
-              Create Account
+              <span *ngIf="!isSubmitting">Create Account</span>
+              <span *ngIf="isSubmitting" class="flex items-center justify-center gap-2">
+                <svg
+                  class="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Creating Account...
+              </span>
             </button>
 
             <!-- Divider -->
