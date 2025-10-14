@@ -32,8 +32,6 @@ export class GoogleAuth {
         full_name: user.displayName,
         profile_image: user.photoURL,
         password: user.uid,
-        role: 'user',
-        subscription_plan_id: 1,
       });
     } catch (error) {
       console.error('Google-Login error:', error);

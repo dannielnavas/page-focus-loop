@@ -136,4 +136,8 @@ export class Register implements OnInit {
       },
     });
   }
+
+  onGoogleSignIn() {
+    this.googleAuth.googleLogin();
+  }
 }
