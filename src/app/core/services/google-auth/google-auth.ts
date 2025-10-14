@@ -23,16 +23,26 @@ export class GoogleAuth {
     try {
       const result = await signInWithPopup(this.firebaseAuth, provider);
       const user = result.user;
+      console.log(user);
       if (!user) {
         throw new Error('Google-Login error');
       }
       console.log(user);
-      this.user.createUser({
-        email: user.email,
-        full_name: user.displayName,
-        profile_image: user.photoURL,
-        password: user.uid,
-      });
+      this.user
+        .createUser({
+          email: user.email,
+          full_name: user.displayName,
+          profile_image: user.photoURL,
+          password: user.uid,
+        })
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+          },
+          error: (error) => {
+            console.error('Error creating user:', error);
+          },
+        });
     } catch (error) {
       console.error('Google-Login error:', error);
       throw error;
