@@ -146,7 +146,7 @@ export class Register implements OnInit {
       throw new Error('Form is invalid');
     }
 
-    const { subscription_plan_id, accept_terms, ...user } = this.formUser.value;
+    const { subscription_plan_id, accept_terms, confirmPassword, ...user } = this.formUser.value;
 
     if (!accept_terms) {
       throw new Error('You must accept the terms and conditions');
