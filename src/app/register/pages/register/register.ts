@@ -1,6 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { GoogleAuth } from '@services/google-auth/google-auth';
 import { User } from '@services/users/user';
 
@@ -17,35 +25,54 @@ export class Register implements OnInit {
 
   public formUser!: FormGroup;
   public isSubmitting = false;
+  public showPassword = false;
+  public showConfirmPassword = false;
 
   ngOnInit(): void {
-    this.formUser = this.formBuilder.group({
-      full_name: ['', [Validators.required]],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email,
-          Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
-          Validators.minLength(3),
-          Validators.maxLength(100),
+    this.formUser = this.formBuilder.group(
+      {
+        full_name: ['', [Validators.required]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.email,
+            Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+            Validators.minLength(3),
+            Validators.maxLength(100),
+          ],
         ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(16),
-          Validators.pattern(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
-          ),
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(16),
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
+            ),
+          ],
         ],
-      ],
-      subscription_plan_id: ['free', [Validators.required]],
-      accept_terms: [false, [Validators.required]],
-    });
+        confirmPassword: ['', [Validators.required]],
+        subscription_plan_id: ['free', [Validators.required]],
+        accept_terms: [false, [Validators.required]],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
+
+  private passwordMatchValidator: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    return password.value === confirmPassword.value ? null : { passwordMismatch: true };
+  };
 
   // Validation helper methods
   getFieldError(fieldName: string): string {
@@ -74,11 +101,21 @@ export class Register implements OnInit {
     return '';
   }
 
+  getFormError(): string {
+    if (this.formUser.errors && this.formUser.touched) {
+      if (this.formUser.errors['passwordMismatch']) {
+        return 'Passwords do not match';
+      }
+    }
+    return '';
+  }
+
   private getFieldLabel(fieldName: string): string {
     const labels: { [key: string]: string } = {
       full_name: 'Full name',
       email: 'Email',
       password: 'Password',
+      confirmPassword: 'Confirm Password',
       subscription_plan_id: 'Plan',
       accept_terms: 'Terms acceptance',
     };
@@ -137,5 +174,13 @@ export class Register implements OnInit {
 
   onGoogleSignIn() {
     this.googleAuth.googleLogin();
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
