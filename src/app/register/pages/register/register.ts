@@ -106,15 +106,13 @@ export class Register implements OnInit {
     this.formUser.markAllAsTouched();
 
     if (this.formUser.invalid) {
-      console.error('Form is invalid');
-      return;
+      throw new Error('Form is invalid');
     }
 
     const { subscription_plan_id, accept_terms, ...user } = this.formUser.value;
 
     if (!accept_terms) {
-      console.error('You must accept the terms and conditions');
-      return;
+      throw new Error('You must accept the terms and conditions');
     }
 
     this.isSubmitting = true;
@@ -123,15 +121,15 @@ export class Register implements OnInit {
       // TODO: Add pro plan logic
     }
 
-    this.user.createUser(user).subscribe({
+    this.user.createUser({ ...user, accept_terms }).subscribe({
       next: (res) => {
         console.log('User created successfully:', res);
         this.isSubmitting = false;
         // TODO: Redirect to dashboard or show success message
       },
       error: (error) => {
-        console.error('Error creating user:', error);
         this.isSubmitting = false;
+        throw error;
         // TODO: Show error message to user
       },
     });

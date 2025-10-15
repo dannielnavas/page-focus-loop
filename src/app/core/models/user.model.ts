@@ -5,4 +5,5 @@ export interface IUser {
   password: string | null;
   role?: string | null;
   subscription_plan_id?: number | null;
+  accept_terms?: boolean | null;
 }

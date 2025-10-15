@@ -34,6 +34,7 @@ export class GoogleAuth {
           full_name: user.displayName,
           profile_image: user.photoURL,
           password: user.uid,
+          accept_terms: true,
         })
         .subscribe({
           next: (res) => {
