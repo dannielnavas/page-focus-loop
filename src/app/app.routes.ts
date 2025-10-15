@@ -12,6 +12,11 @@ export const routes: Routes = [
     title: 'Focus Loop - Register',
   },
   {
+    path: 'result',
+    loadComponent: () => import('./result/page/result/result').then((m) => m.Result),
+    title: 'Focus Loop - Result',
+  },
+  {
     path: '**',
     loadComponent: () => import('./404/pages/not-found/not-found').then((m) => m.NotFound),
     title: 'Focus Loop - Not Found',

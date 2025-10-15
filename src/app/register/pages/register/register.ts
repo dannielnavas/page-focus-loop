@@ -9,6 +9,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GoogleAuth } from '@services/google-auth/google-auth';
 import { User } from '@services/users/user';
 
@@ -22,6 +23,7 @@ export class Register implements OnInit {
   private readonly googleAuth = inject(GoogleAuth);
   private readonly user = inject(User);
   private readonly formBuilder = inject(FormBuilder);
+  private readonly router = inject(Router);
 
   public formUser!: FormGroup;
   public isSubmitting = false;
@@ -162,10 +164,11 @@ export class Register implements OnInit {
       next: (res) => {
         console.log('User created successfully:', res);
         this.isSubmitting = false;
-        // TODO: Redirect to dashboard or show success message
+        this.router.navigateByUrl('/result');
       },
       error: (error) => {
         this.isSubmitting = false;
+        this.router.navigateByUrl('/');
         throw error;
         // TODO: Show error message to user
       },
