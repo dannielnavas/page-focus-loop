@@ -10,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GithubAuth } from '@services/github-auth/github-auth';
 import { GoogleAuth } from '@services/google-auth/google-auth';
 import { User } from '@services/users/user';
 
@@ -21,6 +22,7 @@ import { User } from '@services/users/user';
 })
 export class Register implements OnInit {
   private readonly googleAuth = inject(GoogleAuth);
+  private readonly githubAuth = inject(GithubAuth);
   private readonly user = inject(User);
   private readonly formBuilder = inject(FormBuilder);
   private readonly router = inject(Router);
@@ -177,6 +179,20 @@ export class Register implements OnInit {
 
   onGoogleSignIn() {
     this.googleAuth.googleLogin();
+  }
+
+  onGithubSignIn() {
+    this.githubAuth
+      .githubLogin()
+      .then(() => {
+        this.router.navigateByUrl('/result');
+      })
+      .catch((error) => {
+        console.error('Error creating user:', error);
+        this.router.navigateByUrl('/');
+        throw error;
+      });
+    this.isSubmitting = false;
   }
 
   togglePasswordVisibility() {
