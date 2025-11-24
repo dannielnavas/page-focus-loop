@@ -312,6 +312,7 @@
                   <input
                     type="radio"
                     name="subscription_plan_id"
+                    [checked]="type() === 'pro'"
                     value="pro"
                     formControlName="subscription_plan_id"
                     class="mt-1 w-4 h-4 text-pink-500 focus:ring-pink-500 focus:ring-offset-0"
@@ -319,7 +320,7 @@
                   <div class="flex-1">
                     <div class="flex items-center justify-between mb-1">
                       <div class="flex items-center gap-2">
-                        <span class="font-semibold text-white">Pro Plan</span>
+                        <span class="font-semibold text-white">Pro Plan {{ type() }} </span>
                         <svg
                           class="w-4 h-4 text-pink-400"
                           fill="none"

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -31,6 +31,15 @@ export class Register implements OnInit {
   public isSubmitting = false;
   public showPassword = false;
   public showConfirmPassword = false;
+  public type = input<string>('');
+
+  constructor() {
+    effect(() => {
+      console.log('type', this.type());
+      this.formUser.get('subscription_plan_id')?.setValue(this.type() === 'pro' ? 'pro' : 'free');
+      this.formUser.get('subscription_plan_id')?.updateValueAndValidity();
+    });
+  }
 
   ngOnInit(): void {
     this.formUser = this.formBuilder.group(
