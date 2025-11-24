@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, effect, inject, input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
 import {
   AbstractControl,
@@ -16,7 +16,7 @@ import { User } from '@services/users/user';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
