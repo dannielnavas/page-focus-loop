@@ -148,7 +148,7 @@ import { RouterLink } from '@angular/router';
 
             <button
               class="w-full mb-8 gradient-bg text-white px-6 py-3 rounded-lg transition-all cursor-pointer"
-              [routerLink]="'/register'"
+              [routerLink]="'/register/pro'"
             >
               Start Free Trial
             </button>
