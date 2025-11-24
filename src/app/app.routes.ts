@@ -7,7 +7,7 @@ export const routes: Routes = [
     title: 'Focus Loop',
   },
   {
-    path: 'register',
+    path: 'register/:type',
     loadComponent: () => import('./register/pages/register/register').then((m) => m.Register),
     title: 'Focus Loop - Register',
   },
