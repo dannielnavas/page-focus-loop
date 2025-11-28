@@ -36,7 +36,7 @@ import { RouterLink } from '@angular/router';
 
             <button
               class="w-full mb-8 bg-[#2a3548] hover:bg-[#323d52] text-white px-6 py-3 rounded-lg transition-all cursor-pointer"
-              [routerLink]="'/register'"
+              [routerLink]="'/register/free'"
             >
               Get Started Free
             </button>

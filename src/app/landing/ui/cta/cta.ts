@@ -22,7 +22,7 @@ import { RouterLink } from '@angular/router';
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             class="gradient-bg text-white font-medium text-lg px-8 py-4 rounded-lg transition-all flex items-center gap-2 cursor-pointer"
-            [routerLink]="'/register'"
+            [routerLink]="'/register/free'"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
